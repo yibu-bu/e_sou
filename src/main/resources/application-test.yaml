@@ -1,0 +1,37 @@
+server:
+  port: 8080
+  address: 0.0.0.0
+  servlet:
+    context-path: /api
+    session:
+      cookie:
+        domain: localhost
+        max-age: 2592000
+
+spring:
+  datasource:
+    # 修改为您的 MySQL 配置
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/db_name?serverTimezone=Asia/Shanghai
+    username: your username
+    password: your password
+  jackson:
+    time-zone: Asia/Shanghai
+  session:
+    timeout: 86400
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  elasticsearch:
+    uris: http://localhost:9200 # 修改为您的es地址
+
+mybatis-plus:
+  type-aliases-package: com.yibu.domain.entity
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: false
+  global-config:
+    db-config:
+      logic-delete-field: isDelete
+      logic-delete-value: 1
+      logic-not-delete-value: 0
